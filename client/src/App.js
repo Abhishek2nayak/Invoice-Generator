@@ -1,10 +1,14 @@
 import React from "react";
+import  './index.css'
+import DefineRoutes from "./routes/Routes";
+import './custom.css'
+
 
 const App = () => {
     return(
-        <>
-        <h1>React App</h1>
-        </>
+      <>
+      <DefineRoutes />
+      </>
     );
 }
 

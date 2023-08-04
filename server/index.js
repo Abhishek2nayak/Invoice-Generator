@@ -2,19 +2,21 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
-import postRoutes from './routes/posts.js'
+import authRoutes from './routes/authRoutes.js'
+import dotenv from 'dotenv'
+import dbConnect from './db/conn.js'
 
-const CONNECTION_URL = 'mongodb+srv://abhishek5nayak22:kJsepI373AwdFb0G@cluster0.mu6bock.mongodb.net/?retryWrites=true&w=majority'
-const PORT = process.env.PORT || 9090;
+dotenv.config({path: './config.env'})
+
+const CONNECTION_URL = process.env.DATABASE;
+const PORT = process.env.PORT;
 const app = express();
-app.use('/posts',postRoutes)
+
 app.use(bodyParser.json({extended : true}))
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(cors());
-
+app.use('/auth',authRoutes)
 //connecting express to mongoose 
-mongoose.connect(CONNECTION_URL,{useNewUrlParser : true,useUnifiedTopology : true})
-    .then(() => app.listen(PORT,()=>console.log(`Server is running on port :  ${PORT}`) ))
-    .catch((error)=> console.log(error.message))
+dbConnect(CONNECTION_URL)
+app.listen(PORT,()=> console.log(`port running on ${PORT}`))
 
-// mongoose.set('useFindAndModify',false)
