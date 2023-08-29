@@ -9,6 +9,14 @@ module.exports = {
   daisyui: {
     themes: ["light", "dark", "fantasy"],
   },
+  resolve: {
+    fallback: {
+      // "buffer": require.resolve("buffer/"),
+      "crypto": require.resolve("crypto-browserify")
+    }
+    
+  }
+  
  
 }
 

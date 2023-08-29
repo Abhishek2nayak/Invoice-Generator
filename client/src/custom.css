@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body ,html {
+  width: 100%!important;
+  height: 100%!important;
+}
 
 .bg-primary {
   background-color: transparent !important;
@@ -18,29 +22,35 @@
 }
 body {
   background-color: transparent !important;
-}
-.sidebar {
-  border-right: 2px solid grey;
-  width: 70px;
-  height: calc(100vh - 70px);
-}
-
-.home .cnavbar {
-  width: 100%;
-  height: 70px;
-  border-bottom: 2px solid grey;
-}
-
-.main {
-  width: 100%;
-  height: calc(100vh - 70px);
-}
-.expanded {
-  width: 200px;
+  
 }
 
 .home {
+  width: 100vw;
+  height: 100vh;
+  
   display: flex;
-  flex-wrap: wrap;
-  position: relative;
+}
+
+.c-sidebar {
+  width: 200px;
+  height: 100vh;
+  border-right: 2px solid grey;
+}
+
+.right {
+  width: calc(100% - 200px);
+  height: 100%;
+ 
+}
+
+.c-navbar {
+  border-bottom: 2px solid grey;
+  height: 50px;
+}
+
+.main {
+  background-color: #dadada;
+  height: calc(100% - 50px);
+  width: 100%;
 }
