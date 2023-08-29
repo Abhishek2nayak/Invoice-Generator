@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import {useNavigate} from 'react-router-dom'
 import axios from "axios";
 import FormControl from "../../Components/Form/FormControl";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const navigate = useNavigate()
@@ -21,19 +23,19 @@ const Register = () => {
     setFormData({ ...formData, [name]: value });
   };
   const handleSubmit =async (e) => {
-    alert('herre')
     e.preventDefault();
     try {
      const response =  await axios.post('http://localhost:9090/auth/register',formData)
-     if(response.status == 201) {
-      alert('sucessfully register')
+     if(response.status === 201) {
+      
       navigate('/login')
+      toast.success("Registration Successfully")
      }
-    
-     const message = response.message
-     alert(message)
+     const message = response.message;
+     toast.error(message)
     } catch (err) {
-      alert("console erroe :"+ err)
+      console.log(err);
+      toast.error("Error occured during registration")
     }
   };
 
@@ -41,12 +43,8 @@ const Register = () => {
     <>
       <div className="w-full h-screen  flex justify-center items-center">
         <div
-          className="card w-1/2 justify-items-center  bg-info-content text-neutral-content"
-          style={{
-            background: "rgb(238,174,202)",
-            background:
-              " radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,0.6550817836900384) 100%)",
-          }}
+          className="card w-1/2 justify-items-center bg-base-300"
+        
         >
           <h1 className="text-5xl font-bold text-center p-10 text-base-content">
             Register Here
