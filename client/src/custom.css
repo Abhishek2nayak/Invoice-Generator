@@ -1,12 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 body ,html {
   width: 100%!important;
   height: 100%!important;
+  background-color: white !important;
 }
 
 .bg-primary {
@@ -35,7 +41,7 @@ body {
 .c-sidebar {
   width: 200px;
   height: 100vh;
-  border-right: 2px solid grey;
+  border-right: 2px solid #eae8e8;
 }
 
 .right {
@@ -45,12 +51,12 @@ body {
 }
 
 .c-navbar {
-  border-bottom: 2px solid grey;
-  height: 50px;
+  border-bottom:  2px solid #eae8e8;
+  height: 70px;
 }
 
 .main {
-  background-color: #dadada;
-  height: calc(100% - 50px);
+  
+  height: calc(100% - 70px);
   width: 100%;
 }
