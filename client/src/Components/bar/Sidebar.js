@@ -1,31 +1,78 @@
-import React from 'react';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className='c-sidebar'>
-       <h1 className="text-1xl font-bold text-center mb-4 mt-2">Task Manager</h1>
-      <ul className="menu bg-base-200 w-full rounded-box">
-  <li>
-    <a>
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-      Overview
-    </a>
-  </li>
-  <li>
-    <a>
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-    
-    </a>
-  </li>
-  <li>
-    <a>
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-      Tasks
-    </a>
-  </li>
-</ul>
+    <div className="c-sidebar">
+      <h1 className="font-bold text-center pt-5 pb-5">Task Manager</h1>
+      <ul className="menu  w-full rounded-box">
+        <IconNavList
+          text="Dashboard"
+          icon={<i class="ri-home-line"></i>}
+          path={"/dashboard"}
+        />
+        <IconNavList
+          text="Tasks"
+          icon={<i class="ri-task-line"></i>}
+          path={"/tasks"}
+        />
+        <IconNavList
+          text="Calender"
+          icon={<i class="ri-calendar-line"></i>}
+          path={"/calender"}
+        />
+        <IconNavList
+          text="Messages"
+          icon={<i class="ri-chat-3-line"></i>}
+          path={"/inbox"}
+        />
+        <IconNavList
+          text="My Team"
+          icon={<i class="ri-user-follow-line"></i>}
+          path={"/myteam"}
+        />
+        <IconNavList
+          text="Settings"
+          icon={<i class="ri-settings-4-line"></i>}
+          path={"/settings"}
+        />
+      </ul>
+      <NavLink className="flex  pl-5 font-bold pt-5">Projects</NavLink>
+      <ul className="w-full flex flex-col gap-3 pt-5">
+        <IconNavList
+          text={"My Project1"}
+          icon={<i class="ri-arrow-right-s-fill"></i>}
+        />
+          <IconNavList
+          text={"My Project2"}
+          icon={<i class="ri-arrow-right-s-fill"></i>}
+        />
+          <IconNavList
+          text={"My Project3"}
+          icon={<i class="ri-arrow-right-s-fill"></i>}
+        />
+      
+      </ul>
+      
     </div>
   );
+};
+
+function IconNavList({ text, icon, path }) {
+  return (
+    <>
+      <li>
+        <NavLink
+          to={path}
+          className="flex gap-3 items-center pl-7 pr-7 text-sm"
+        >
+          {" "}
+          <span>{icon}</span> <span>{text}</span>
+        </NavLink>
+      </li>
+    </>
+  );
 }
+
 
 export default Sidebar;
